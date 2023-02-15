@@ -33,3 +33,24 @@ let movieData = {
     cast: ["Ralph Fiennes", "F. Murray Abraham", "Mathieu Amalric"],
   },
 };
+console.log(movieData);
+console.log(movieData["Fantastic Mr. Fox"]);
+console.log(movieData["Fantastic Mr. Fox"].year);
+console.log(movieData["Fantastic Mr. Fox"]['year']);
+console.log(movieData["Fantastic Mr. Fox"].cast[1]);
+
+let object = document.getElementById("test").innerHTML;
+console.log(object);
+let object2 = document.getElementById("test");
+console.log(object2);
+
+let foxYear = movieData["Fantastic Mr. Fox"]['year'];
+
+document.getElementById("test").innerHTML = foxYear;
+
+let a = Object.keys(movieData);
+let b = Object.values(movieData);
+let c = Object.entries(movieData);
+console.log(a);
+console.log(b);
+console.log(c);
