@@ -33,24 +33,40 @@ let movieData = {
     cast: ["Ralph Fiennes", "F. Murray Abraham", "Mathieu Amalric"],
   },
 };
+//Practising data retrieval
 console.log(movieData);
 console.log(movieData["Fantastic Mr. Fox"]);
 console.log(movieData["Fantastic Mr. Fox"].year);
 console.log(movieData["Fantastic Mr. Fox"]['year']);
 console.log(movieData["Fantastic Mr. Fox"].cast[1]);
 
-let object = document.getElementById("test").innerHTML;
-console.log(object);
-let object2 = document.getElementById("test");
-console.log(object2);
+// let object = document.getElementById("test").innerHTML;
+// console.log(object);
+// let object2 = document.getElementById("test");
+// console.log(object2);
 
-let foxYear = movieData["Fantastic Mr. Fox"]['year'];
+//Practising data render
+// let foxYear = movieData["Fantastic Mr. Fox"]['year'];
 
-document.getElementById("test").innerHTML = foxYear;
+// document.getElementById("test").innerHTML = foxYear;
 
+//Practising object conversion
 let a = Object.keys(movieData);
 let b = Object.values(movieData);
 let c = Object.entries(movieData);
 console.log(a);
 console.log(b);
 console.log(c);
+
+//Rendering movie names to html page
+const movieListNames = Object.keys(movieData);
+console.log(movieListNames);
+//Passing in an array of movie names as a parameter
+function addSpaceToName(array) {
+  for (let movie = 1; movie < array.length; movie++) {
+    array[movie] = " " + array[movie]; 
+  }
+  return array;
+}
+addSpaceToName(movieListNames);
+document.getElementById("movie-list").innerHTML = movieListNames;
