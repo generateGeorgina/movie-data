@@ -71,6 +71,12 @@ function addSpaceToName(array) {
 addSpaceToName(movieListNames);
 document.getElementById("movie-list").innerHTML = movieListNames;
 
+
+// experimenting with an array
+movieDataArray = Object.entries(movieData);
+for (let i in movieDataArray) {
+  console.log(movieDataArray[i]);
+};
 //drop down list
 //get element by id
 const moviesDropDown = document.getElementById('movies-drop-down');
@@ -90,6 +96,6 @@ for (let movieName in movieData) {
 
 //display details when selected from drop down list
 const movieDetails = document.getElementById('movie-details');
-moviesDropDown.addEventListener('change', parameter => {
-  movieDetails.innerHTML = parameter.target.value;
+moviesDropDown.addEventListener('change', movieNameKey => {
+  movieDetails.innerHTML = movieNameKey.target.values;
 });
