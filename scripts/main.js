@@ -97,5 +97,5 @@ for (let movieName in movieData) {
 //display details when selected from drop down list
 const movieDetails = document.getElementById('movie-details');
 moviesDropDown.addEventListener('change', movieNameKey => {
-  movieDetails.innerHTML = movieNameKey.target.values;
+  movieDetails.innerHTML = movieNameKey.target.value;
 });
