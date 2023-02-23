@@ -34,11 +34,11 @@ let movieData = {
   },
 };
 //Practising data retrieval
-console.log(movieData);
-console.log(movieData["Fantastic Mr. Fox"]);
-console.log(movieData["Fantastic Mr. Fox"].year);
-console.log(movieData["Fantastic Mr. Fox"]['year']);
-console.log(movieData["Fantastic Mr. Fox"].cast[1]);
+// console.log(movieData);
+// console.log(movieData["Fantastic Mr. Fox"]);
+// console.log(movieData["Fantastic Mr. Fox"].year);
+// console.log(movieData["Fantastic Mr. Fox"]['year']);
+// console.log(movieData["Fantastic Mr. Fox"].cast[1]);
 
 // let object = document.getElementById("test").innerHTML;
 // console.log(object);
@@ -47,20 +47,35 @@ console.log(movieData["Fantastic Mr. Fox"].cast[1]);
 
 //Practising data render
 // let foxYear = movieData["Fantastic Mr. Fox"]['year'];
-
 // document.getElementById("test").innerHTML = foxYear;
 
+// Experimenting with dynamically adding elements onto a HTML page
+// let myTestTwo= document.getElementById('test-two');
+// myTestTwo.innerHTML = 'This test worked';
+// let myTestThree = document.createElement('input');
+// document.body.appendChild(myTestThree);
+
 //Practising object conversion
-let a = Object.keys(movieData);
-let b = Object.values(movieData);
-let c = Object.entries(movieData);
-console.log(a);
-console.log(b);
-console.log(c);
+// let a = Object.keys(movieData);
+// let b = Object.values(movieData);
+// let c = Object.entries(movieData);
+// console.log(a);
+// console.log(b);
+// console.log(c);
+
+// // experimenting with an array
+// movieDataArray = Object.entries(movieData);
+// for (let i in movieDataArray) {
+//   console.log(movieDataArray[i]);
+// };
+
+
+
+
 
 //Rendering movie names to html page
 const movieListNames = Object.keys(movieData);
-console.log(movieListNames);
+// console.log(movieListNames);
 //Passing in an array of movie names as a parameter
 function addSpaceToName(array) {
   for (let movie = 1; movie < array.length; movie++) {
@@ -71,22 +86,20 @@ function addSpaceToName(array) {
 addSpaceToName(movieListNames);
 document.getElementById("movie-list").innerHTML = movieListNames;
 
-function dropDown(movieName) {
-  moviesDropDown.addEventListener('change', movieNameKey => {
-    movieDetails.innerHTML = movieName;
-    console.log(movieName)
-  })}
 
-const movieDetails = document.getElementById('movie-details');
 
-// experimenting with an array
-movieDataArray = Object.entries(movieData);
-for (let i in movieDataArray) {
-  console.log(movieDataArray[i]);
-};
+
+
+
 //drop down list
-//get element by id
+
+// get movie-details div element
+const movieDetailsElement = document.getElementById('movie-details');
+//get movies-drop-down select element
 const moviesDropDown = document.getElementById('movies-drop-down');
+
+
+
 // for...in loop (for enumerable object)
 for (let movieName in movieData) {
   //create option element
@@ -99,15 +112,39 @@ for (let movieName in movieData) {
   movieOptionElement.appendChild(movieOptionText);
   //add to select element
   moviesDropDown.appendChild(movieOptionElement);
+  //render movie details
 
-  dropDown(movieData[movieName]["cast"])
+  let castArr = Object.values(movieData[movieName]['cast']);
+  console.log(castArr);
+  let castFunc = (castParam) => {
+    for (let individual = 0; individual < castParam.length; individual++) {
+      castParam[individual] = ' ' + castParam[individual];
+    };
+    console.log(castParam);
+
+    return castParam;
+  };
+  let movieDetailsVar = 'Plot: ' + movieData[movieName]["plot"] + ' Rating: ' + movieData[movieName]["rating"] + ' Year: ' + movieData[movieName]["rating"] + ' Runtime: ' + movieData[movieName]["runtime"] + ' Cast: ' + castFunc(castArr);
+  dropDown(movieDetailsVar);
 };
 
-//display details when selected from drop down list
-/* moviesDropDown.addEventListener('change', movieNameKey => {
-  movieDetails.innerHTML = movieNameKey.target.value;
-  console.log(movieNameKey.target);
-}); */
+// define dropdown function with one parameter
+function dropDown(movieDetailsParam) {
+  // Listen for change event in movies dropdown
+  moviesDropDown.addEventListener('change', () => {
+    movieDetailsElement.innerHTML = movieDetailsParam;
+    console.log(movieDetailsParam);
 
-const newMovie = document.getElementById('new-movie');
+
+    
+  })}
+
+//experimenting with dynamically creating an element
+let testFour = document.getElementById('test-four');
+let movieCastElement = document.createElement('h1');
+testFour.appendChild(movieCastElement);
+
+// const newMovie = document.getElementById('new-movie');
+
+
 
