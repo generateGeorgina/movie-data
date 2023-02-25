@@ -112,20 +112,44 @@ for (let movieName in movieData) {
   movieOptionElement.appendChild(movieOptionText);
   //add to select element
   moviesDropDown.appendChild(movieOptionElement);
+
+
+// Delete movie
+function deleteMoviefunc(deleteMovieParam) {
+  let deleteButtonElement = document.getElementById('delete-movie');
+  // click event
+  deleteButtonElement.addEventListener('click', function(event) {
+  movieOptionElement.setAttribute('id', deleteMovieParam['plot']);
+    if (deleteMovieParam) {
+      delete deleteMovieParam['plot'];
+      console.log(movieData);
+      return movieData;
+    } else {
+      console.log('This did not work' + deleteMovieParam['plot']);
+    }
+  })};
+
+  deleteMoviefunc(movieData[movieName]);
+
+   
+
+
   //render movie details
 
-  let castArr = Object.values(movieData[movieName]['cast']);
-  console.log(castArr);
-  let castFunc = (castParam) => {
-    for (let individual = 0; individual < castParam.length; individual++) {
-      castParam[individual] = ' ' + castParam[individual];
-    };
-    console.log(castParam);
+  // let castArr = Object.values(movieData[movieName]['cast']);
+  // console.log(castArr);
+  // let castFunc = (castParam) => {
+  //   for (let individual = 0; individual < castParam.length; individual++) {
+  //     castParam[individual] = ' ' + castParam[individual];
+  //   };
+  //   console.log(castParam);
 
-    return castParam;
-  };
-  let movieDetailsVar = 'Plot: ' + movieData[movieName]["plot"] + ' Rating: ' + movieData[movieName]["rating"] + ' Year: ' + movieData[movieName]["rating"] + ' Runtime: ' + movieData[movieName]["runtime"] + ' Cast: ' + castFunc(castArr);
-  dropDown(movieDetailsVar);
+  //   return castParam;
+  // };
+  // let movieDetailsVar = 'Plot: ' + movieData[movieName]["plot"]/* + ' Rating: ' + movieData[movieName]["rating"] + ' Year: ' + movieData[movieName]["rating"] + ' Runtime: ' + movieData[movieName]["runtime"] + ' Cast: ' + castFunc(castArr)*/;
+  // console.log(movieDetailsVar);
+  // dropDown(movieDetailsVar);
+  dropDown(movieData[movieName]["cast"]);
 };
 
 // define dropdown function with one parameter
@@ -134,17 +158,15 @@ function dropDown(movieDetailsParam) {
   moviesDropDown.addEventListener('change', () => {
     movieDetailsElement.innerHTML = movieDetailsParam;
     console.log(movieDetailsParam);
-
-
-    
   })}
 
-//experimenting with dynamically creating an element
-let testFour = document.getElementById('test-four');
-let movieCastElement = document.createElement('h1');
-testFour.appendChild(movieCastElement);
+// //experimenting with dynamically creating an element
+// let testFour = document.getElementById('text-four');
+// let movieCastElement = document.createElement('h1');
+// testFour.appendChild(movieCastElement);
 
 // const newMovie = document.getElementById('new-movie');
+
 
 
 
