@@ -79,7 +79,7 @@ let movieData = {
 
 
 //Rendering movie names to html page
-const movieListNames = Object.keys(movieData);
+let movieListNames = Object.keys(movieData);
 // console.log(movieListNames);
 //Passing in an array of movie names as a parameter
 function addSpaceToName(array) {
@@ -99,10 +99,30 @@ document.getElementById("movie-list").innerHTML = movieListNames;
 function dropDown() {
   // Listen for change event in movies dropdown
   moviesDropDown.addEventListener('change', () => {
-    movieDetailsElement.innerHTML = movieData[moviesDropDown.value].cast;
+    let cast = function(array) {
+      for (let cast = 1; cast < array.length; cast++) {
+        array[cast] = " " + array[cast];
+      }
+      return array;
+    }
+    movieDetailsVariable = `Plot: ${movieData[moviesDropDown.value].plot} Cast: ${cast(movieData[moviesDropDown.value].cast)}. Runtime: ${movieData[moviesDropDown.value].runtime}. Year: ${movieData[moviesDropDown.value].year}. Rating: ${movieData[moviesDropDown.value].rating}.`;
+    movieDetailsElement.innerHTML = movieDetailsVariable;
   })}
 
+// Delete movie
+function deleteMovieFunc() {
 
+  // click event
+  deleteButtonElement.addEventListener('click', function() {
+    if (moviesDropDown.value) {
+      delete movieData[moviesDropDown.value];
+      console.log(movieData);
+      document.getElementById('movie-list').innerHTML = Object.keys(movieData);
+      return movieData;
+    } else {
+      console.log('This did not work');
+    }
+  })};
 
 
 //drop down list
@@ -112,6 +132,7 @@ const movieDetailsElement = document.getElementById('movie-details');
 //get movies-drop-down select element
 const moviesDropDown = document.getElementById('movies-drop-down');
 
+const deleteButtonElement = document.getElementById('delete-movie');
 
 
 // for...in loop (for enumerable object)
@@ -127,47 +148,10 @@ for (let movieName in movieData) {
   //add to select element
   moviesDropDown.appendChild(movieOptionElement);
 
-
-// Delete movie
-function deleteMoviefunc(deleteMovieParam) {
-  let deleteButtonElement = document.getElementById('delete-movie');
-  // click event
-  deleteButtonElement.addEventListener('click', function(event) {
-  movieOptionElement.setAttribute('id', deleteMovieParam['plot']);
-    if (deleteMovieParam) {
-      delete deleteMovieParam['plot'];
-      console.log(movieData);
-      return movieData;
-    } else {
-      console.log('This did not work' + deleteMovieParam['plot']);
-    }
-  })};
-
-  deleteMoviefunc(movieData[movieName]);
-
-   
-
-
-  //render movie details
-
-  // let castArr = Object.values(movieData[movieName]['cast']);
-  // console.log(castArr);
-  // let castFunc = (castParam) => {
-  //   for (let individual = 0; individual < castParam.length; individual++) {
-  //     castParam[individual] = ' ' + castParam[individual];
-  //   };
-  //   console.log(castParam);
-
-  //   return castParam;
-  // };
-  // let movieDetailsVar = 'Plot: ' + movieData[movieName]["plot"]/* + ' Rating: ' + movieData[movieName]["rating"] + ' Year: ' + movieData[movieName]["rating"] + ' Runtime: ' + movieData[movieName]["runtime"] + ' Cast: ' + castFunc(castArr)*/;
-  // console.log(movieDetailsVar);
-  // dropDown(movieDetailsVar);
-;
 };
 
-dropDown()
-
+dropDown();
+deleteMovieFunc();
 
 
 
