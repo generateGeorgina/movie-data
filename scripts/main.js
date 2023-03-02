@@ -69,7 +69,12 @@ let movieData = {
 //   console.log(movieDataArray[i]);
 // };
 
+// //experimenting with dynamically creating an element
+// let testFour = document.getElementById('text-four');
+// let movieCastElement = document.createElement('h1');
+// testFour.appendChild(movieCastElement);
 
+// const newMovie = document.getElementById('new-movie');
 
 
 
@@ -90,6 +95,15 @@ document.getElementById("movie-list").innerHTML = movieListNames;
 
 
 
+// define dropdown function with one parameter
+function dropDown() {
+  // Listen for change event in movies dropdown
+  moviesDropDown.addEventListener('change', () => {
+    movieDetailsElement.innerHTML = movieData[moviesDropDown.value].cast;
+  })}
+
+
+
 
 //drop down list
 
@@ -105,7 +119,7 @@ for (let movieName in movieData) {
   //create option element
   let movieOptionElement = document.createElement("option");
   //set the value of the "*value* attribute" (of the option element) to movieName key (of object)
-  movieOptionElement.setAttribute('value', movieData[movieName]);
+  movieOptionElement.setAttribute('value', movieName);
   //text to be display in drop down list is movieName key
   let movieOptionText = document.createTextNode(movieName);
   //add to option element
@@ -149,23 +163,14 @@ function deleteMoviefunc(deleteMovieParam) {
   // let movieDetailsVar = 'Plot: ' + movieData[movieName]["plot"]/* + ' Rating: ' + movieData[movieName]["rating"] + ' Year: ' + movieData[movieName]["rating"] + ' Runtime: ' + movieData[movieName]["runtime"] + ' Cast: ' + castFunc(castArr)*/;
   // console.log(movieDetailsVar);
   // dropDown(movieDetailsVar);
-  dropDown(movieData[movieName]["cast"]);
+;
 };
 
-// define dropdown function with one parameter
-function dropDown(movieDetailsParam) {
-  // Listen for change event in movies dropdown
-  moviesDropDown.addEventListener('change', () => {
-    movieDetailsElement.innerHTML = movieDetailsParam;
-    console.log(movieDetailsParam);
-  })}
+dropDown()
 
-// //experimenting with dynamically creating an element
-// let testFour = document.getElementById('text-four');
-// let movieCastElement = document.createElement('h1');
-// testFour.appendChild(movieCastElement);
 
-// const newMovie = document.getElementById('new-movie');
+
+
 
 
 
