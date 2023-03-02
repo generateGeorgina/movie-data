@@ -1,0 +1,8 @@
+.all-movies {
+    display: inline-block;
+}
+h1 {
+    height: 20px;
+    width: 20px;
+    background-color: black;
+}
