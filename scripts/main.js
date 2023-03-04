@@ -130,7 +130,8 @@ function deleteMovieFunc() {
     console.log(movieData[moviesDropDown.value])
     delete movieData[moviesDropDown.value];
     console.log(movieData);
-    document.getElementById('movie-list').innerHTML = Object.keys(movieData);
+    newMovieListNames = addSpaceToName(Object.keys(movieData));
+    document.getElementById('movie-list').innerHTML = newMovieListNames;
     return movieData;
   }
   )};

@@ -1,8 +1,12 @@
 .all-movies {
     display: inline-block;
 }
-h1 {
-    height: 20px;
-    width: 20px;
-    background-color: black;
+body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: start;
+    align-content: center;
+    background-color: 	#52384f;
+    border-radius: 25px;
 }
