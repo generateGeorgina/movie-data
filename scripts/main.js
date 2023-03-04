@@ -107,6 +107,18 @@ function dropDown() {
     }
     movieDetailsVariable = `Plot: ${movieData[moviesDropDown.value].plot} Cast: ${cast(movieData[moviesDropDown.value].cast)}. Runtime: ${movieData[moviesDropDown.value].runtime}. Year: ${movieData[moviesDropDown.value].year}. Rating: ${movieData[moviesDropDown.value].rating}.`;
     movieDetailsElement.innerHTML = movieDetailsVariable;
+    console.log(movieData[moviesDropDown.value]);
+
+    let movieImageElement = document.getElementById('movieImage');
+    if (movieData[moviesDropDown.value] === movieData["Fantastic Mr. Fox"]) {
+      movieImageElement.src = './images/fantastic-mr.-fox-poster.jpeg';
+    } else if (movieData[moviesDropDown.value] === movieData['The Grand Budapest Hotel']){
+      movieImageElement.src = './images/the-grand-budapest-hotel-poster.jpeg';
+    } else if (movieData[moviesDropDown.value] === movieData['The Royal Tenenbaums']) {
+      movieImageElement.src = './images/the-royal-tenenbaums-poster.jpeg'
+    } else {
+      movieImageElement.src = './images/the-darjeeling-limited-poster.jpeg'
+    };
   })}
 
 // Delete movie
@@ -123,6 +135,7 @@ function deleteMovieFunc() {
       console.log('This did not work');
     }
   })};
+
 
 
 //drop down list
