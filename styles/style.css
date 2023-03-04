@@ -8,5 +8,18 @@ body {
     align-items: start;
     align-content: center;
     background-color: 	#52384f;
-    border-radius: 25px;
+    color:#130d34
+
 }
+select, button {
+    background-color: #52384f;
+    border-color: #130d34;
+    border: 1px solid #130d34;
+    border-radius: 12px;
+    color: #130d34;
+}
+
+button:hover {
+    color: rgb(197, 179, 202);
+}
+
