@@ -1,3 +1,7 @@
+html {
+    font-family: 'Lato', sans-serif; /*cursive is the font's fallback value*/
+}
+
 .all-movies {
     display: inline-block;
 }
@@ -22,4 +26,14 @@ select, button {
 button:hover {
     color: rgb(197, 179, 202);
 }
+#all-movies {
+    font-size: 15px;
+}
 
+#movie-list {
+    font-size: 30px;
+}
+
+label, #movie-details{
+    font-size: 20px;
+}
