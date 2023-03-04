@@ -126,11 +126,12 @@ function deleteMovieFunc() {
 
   // click event
   deleteButtonElement.addEventListener('click', function() {
-      console.log(movieData[moviesDropDown.value])
-      delete movieData[moviesDropDown.value];
-      console.log(movieData);
-      document.getElementById('movie-list').innerHTML = Object.keys(movieData);
-      return movieData;
+    alert('Deleting this movie is irreversible');
+    console.log(movieData[moviesDropDown.value])
+    delete movieData[moviesDropDown.value];
+    console.log(movieData);
+    document.getElementById('movie-list').innerHTML = Object.keys(movieData);
+    return movieData;
   }
   )};
 
