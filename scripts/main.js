@@ -126,15 +126,13 @@ function deleteMovieFunc() {
 
   // click event
   deleteButtonElement.addEventListener('click', function() {
-    if (moviesDropDown.value) {
+      console.log(movieData[moviesDropDown.value])
       delete movieData[moviesDropDown.value];
       console.log(movieData);
       document.getElementById('movie-list').innerHTML = Object.keys(movieData);
       return movieData;
-    } else {
-      console.log('This did not work');
-    }
-  })};
+  }
+  )};
 
 
 
@@ -147,22 +145,26 @@ const moviesDropDown = document.getElementById('movies-drop-down');
 
 const deleteButtonElement = document.getElementById('delete-movie');
 
+function moviesDropDownFunc() {
+  // for...in loop (for enumerable object)
+  for (let movieName in movieData) {
+    //create option element
+    let movieOptionElement = document.createElement("option");
+    //set the value of the "*value* attribute" (of the option element) to movieName key (of object)
+    movieOptionElement.setAttribute('value', movieName);
+    movieOptionElement.id = movieName;
+    //text to be display in drop down list is movieName key
+    let movieOptionText = document.createTextNode(movieName);
+    //add to option element
+    movieOptionElement.appendChild(movieOptionText);
+    //add to select element
+    moviesDropDown.appendChild(movieOptionElement);
 
-// for...in loop (for enumerable object)
-for (let movieName in movieData) {
-  //create option element
-  let movieOptionElement = document.createElement("option");
-  //set the value of the "*value* attribute" (of the option element) to movieName key (of object)
-  movieOptionElement.setAttribute('value', movieName);
-  //text to be display in drop down list is movieName key
-  let movieOptionText = document.createTextNode(movieName);
-  //add to option element
-  movieOptionElement.appendChild(movieOptionText);
-  //add to select element
-  moviesDropDown.appendChild(movieOptionElement);
-
+  };
 };
 
+
+moviesDropDownFunc();
 dropDown();
 deleteMovieFunc();
 
