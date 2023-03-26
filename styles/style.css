@@ -8,20 +8,21 @@ html {
 body {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     align-items: start;
     align-content: center;
-    background-color: 	#52384f;
-    color:#130d34
+    background-color: 	#80587b;
+    color:#130d34;
 
 }
 select, button {
-    background-color: #52384f;
+    background-color: #80587b;
     border-color: #130d34;
     border: 1px solid #130d34;
     border-radius: 12px;
     color: #130d34;
 }
+
 
 button:hover {
     color: rgb(197, 179, 202);
@@ -36,4 +37,19 @@ button:hover {
 
 label, #movie-details{
     font-size: 20px;
+}
+
+label {
+    display: block;
+    width: 100%;
+}
+
+#movie-details, #movieImage {
+    display: inline-block;
+}
+#movieImage {
+    width: 20%;
+}
+#movie-details {
+    width: 80%;
 }
